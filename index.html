@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Questions and Answers</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            display: none;
+        }
+
+        .show-answer {
+            cursor: pointer;
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Questions and Answers</h1>
+
+    <div class="question">
+        <h3>Question 1:</h3>
+        <p>What is JavaScript?</p>
+        <p class="answer">JavaScript is a programming language that allows you to add interactivity and dynamic features to websites.</p>
+        <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+    </div>
+
+    <div class="question">
+        <h3>Question 2:</h3>
+        <p>What are the data types in JavaScript?</p>
+        <p class="answer">JavaScript has several data types including string, number, boolean, object, and more.</p>
+        <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+    </div>
+
+    <!-- Add more questions and answers here -->
+
+    <script>
+        function toggleAnswer(element) {
+            var answer = element.previousElementSibling;
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+                element.innerHTML = "Hide Answer";
+            } else {
+                answer.style.display = "none";
+                element.innerHTML = "Show Answer";
+            }
+        }
+    </script>
+</body>
+</html>
