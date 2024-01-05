@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Questions and Answers</title>
     <style>
         body {
@@ -31,20 +32,49 @@
         }
     </style>
 </head>
+
 <body>
     <h1>JavaScript Questions and Answers</h1>
 
     <div class="question">
-        <h3>Question 1:</h3>
-        <p>What is JavaScript?</p>
-        <p class="answer">JavaScript is a programming language that allows you to add interactivity and dynamic features to websites.</p>
+        <h3>Question 2:</h3>
+        <p>
+            Explain the difference between synchronous and asynchronous functions in
+            JavaScript.
+        </p>
+        <p class="answer">
+            Synchronous and asynchronous functions refer to how JavaScript manages
+            the execution of code.
+            <br /><br />
+            **Synchronous Functions:** In synchronous operations, each task must
+            wait for the previous one to complete before moving on. It follows a
+            sequential and blocking execution model, meaning if there's a
+            time-consuming task, it will block the execution until completed. For
+            example, imagine fetching data from a server synchronously; the entire
+            program will halt until the data is received.
+            <br /><br />
+            **Asynchronous Functions:** On the other hand, asynchronous operations
+            don't wait for a task to finish before moving on to the next one.
+            Instead, it allows the program to continue executing while the
+            time-consuming task operates in the background. This non-blocking
+            behavior is particularly useful for tasks like data fetching, where we
+            don't want to freeze the entire application while waiting for data.
+            <br /><br />
+            In JavaScript, asynchronous behavior is often achieved using callbacks,
+            promises, and async/await. These mechanisms allow developers to handle
+            tasks like fetching data or reading files without blocking the main
+            thread, providing a more responsive user experience.
+        </p>
         <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
     </div>
 
     <div class="question">
         <h3>Question 2:</h3>
         <p>What are the data types in JavaScript?</p>
-        <p class="answer">JavaScript has several data types including string, number, boolean, object, and more.</p>
+        <p class="answer">
+            JavaScript has several data types including string, number, boolean,
+            object, and more.
+        </p>
         <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
     </div>
 
@@ -63,4 +93,5 @@
         }
     </script>
 </body>
+
 </html>
