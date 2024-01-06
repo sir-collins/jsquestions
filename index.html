@@ -123,54 +123,53 @@
                 What are the different data types in JavaScript, and how do you
                 determine the type of a variable?
             </p>
-            <p class="answer">
+            <section class="answer">
                 <code>
-            In JavaScript, there are several primitive data types, each
-            representing a single value. These include:
-            <ol>
-              <li>
-                <strong>number:</strong> Represents both integer and
-                floating-point numbers. Example:
-                <code>let count: number = 42;</code>
-                </li>
-                <li>
-                    <strong>string:</strong> Represents text data enclosed in single
-                    or double quotes. Example:
-                    <code>let message: string = "Hello, TypeScript";</code>
-                </li>
-                <li>
-                    <strong>boolean:</strong> Represents a binary value, either
-                    <code>true</code> or <code>false</code>. Example:
-                    <code>let isDone: boolean = false;</code>
-                </li>
-                <li>
-                    <strong>null:</strong> Represents the intentional absence of any
-                    object value. It is a primitive value, not a type, and can be
-                    assigned to variables to signify the absence of an object.
-                    Example:
-                    <code>let data: null = null;</code>
-                </li>
-                <li>
-                    <strong>undefined:</strong> Represents a variable that has been
-                    declared but hasn't been assigned a value. Example:
-                    <code>let value: undefined = undefined;</code>
-                </li>
-                <li>
-                    <strong>symbol:</strong> (ES6 feature) Represents a unique and
-                    immutable value often used as object keys. Example:
-                    <code>const uniqueKey = Symbol("description");</code>
-                </li>
-                <li>
-                    <strong>bigint:</strong> (ES11 feature) Represents arbitrary
-                    precision integers. Example:
-                    <code>const bigValue: bigint =
-                  1234567890123456789012345678901234567890n;</code>
-                </li>
-                </ol>
-                These primitive types serve as the building blocks for more complex
-                data structures, such as arrays, objects, and custom classes.
+                    In JavaScript, there are several primitive data types, each
+                    representing a single value. These include:
+                    <ol>
+                        <li>
+                            <strong>number:</strong> Represents both integer and
+                            floating-point numbers. Example:
+                            <code>let count: number = 42;</code>
+                        </li>
+                        <li>
+                            <strong>string:</strong> Represents text data enclosed in single
+                            or double quotes. Example:
+                            <code>let message: string = "Hello, TypeScript";</code>
+                        </li>
+                        <li>
+                            <strong>boolean:</strong> Represents a binary value, either
+                            <code>true</code> or <code>false</code>. Example:
+                            <code>let isDone: boolean = false;</code>
+                        </li>
+                        <li>
+                            <strong>null:</strong> Represents the intentional absence of any
+                            object value. It is a primitive value, not a type, and can be
+                            assigned to variables to signify the absence of an object.
+                            Example:
+                            <code>let data: null = null;</code>
+                        </li>
+                        <li>
+                            <strong>undefined:</strong> Represents a variable that has been
+                            declared but hasn't been assigned a value. Example:
+                            <code>let value: undefined = undefined;</code>
+                        </li>
+                        <li>
+                            <strong>symbol:</strong> (ES6 feature) Represents a unique and
+                            immutable value often used as object keys. Example:
+                            <code>const uniqueKey = Symbol("description");</code>
+                        </li>
+                        <li>
+                            <strong>bigint:</strong> (ES11 feature) Represents arbitrary
+                            precision integers. Example:
+                            <code>const bigValue: bigint =1234567890123456789012345678901234567890n;</code>
+                        </li>
+                    </ol>
+                    These primitive types serve as the building blocks for more complex
+                    data structures, such as arrays, objects, and custom classes.
                 </code>
-            </p>
+            </section>
             <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
         </div>
 
@@ -989,15 +988,14 @@
             Event propagation is the process of capturing and processing events
             in the DOM hierarchy. It involves two phases: the capturing phase
             and the bubbling phase.
-          
+
             <br /><br />
             <strong>Event Capturing:</strong> In the capturing phase, the event
             starts from the root of the DOM hierarchy and trickles down to the
             target element. It allows you to capture the event before it reaches
             the target. Event capturing uses the
             <code>addEventListener</code> method with the third parameter set to
-                <code>true</code>.
-                <br /><br />
+                <code>true</code>. <br /><br />
                 <strong>Event Bubbling:</strong> In the bubbling phase, the event
                 starts from the target element and bubbles up through its ancestors
                 to the root of the DOM. It allows you to handle the event as it
@@ -1040,16 +1038,25 @@
 
         <div class="question">
             <h3>Question:</h3>
-            <p>What is the difference between event.target and event.currentTarget in JavaScript?</p>
+            <p>
+                What is the difference between event.target and event.currentTarget in
+                JavaScript?
+            </p>
             <section class="answer">
                 <code>
-                    Both the event.target and event.currentTarget properties are used to refer to the element on which the event occurred. However, there are some key differences between them.
-                    <br /><br />
-                    <strong>event.target:</strong> The event.target property refers to the element on which the event occurred, while the event.currentTarget property refers to the element to which the event handler is attached. This means that the event.target property can be different from the event.currentTarget property if the event handler is attached to an ancestor element.
-                    <br /><br />
-                    <strong>Example:</strong>
-                    <br />
-                    <pre>
+            Both the event.target and event.currentTarget properties are used to
+            refer to the element on which the event occurred. However, there are
+            some key differences between them.
+            <br /><br />
+            <strong>event.target:</strong> The event.target property refers to
+            the element on which the event occurred, while the
+            event.currentTarget property refers to the element to which the
+            event handler is attached. This means that the event.target property
+            can be different from the event.currentTarget property if the event
+            handler is attached to an ancestor element. <br /><br />
+            <strong>Example:</strong>
+            <br />
+            <pre>
                         <code>
                             // HTML
                             <div id="outer">
@@ -1079,8 +1086,10 @@
                             });
                         </code>
                 </pre>
-                In this example, when the button is clicked, the event is first captured by the button, then propagated
-                to the inner div, and finally propagated to the outer div. This is the default behavior for most events.
+                In this example, when the button is clicked, the event is first
+                captured by the button, then propagated to the inner div, and
+                finally propagated to the outer div. This is the default behavior
+                for most events.
                 </code>
             </section>
             <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
@@ -1093,15 +1102,17 @@
             <p>How do you handle custom events and event delegation?</p>
             <section class="answer">
                 <code>
-                    Custom events and event delegation are two different ways to handle events in JavaScript.
-                    <br /><br />
-                    <strong>Custom Events:</strong> Custom events are events that are created by the developer and triggered
-                    manually, rather than automatically by the browser. They are useful for handling complex interactions
-                    that cannot be handled by the browser's built-in events. 
-                    <br /><br />
-                    <strong>Example:</strong>
-                    <br />
-                    <pre>
+            Custom events and event delegation are two different ways to handle
+            events in JavaScript.
+            <br /><br />
+            <strong>Custom Events:</strong> Custom events are events that are
+            created by the developer and triggered manually, rather than
+            automatically by the browser. They are useful for handling complex
+            interactions that cannot be handled by the browser's built-in
+            events. <br /><br />
+            <strong>Example:</strong>
+            <br />
+            <pre>
                         <code>
                             // Create a custom event
                             const event = new CustomEvent('my-event', {
@@ -1118,17 +1129,18 @@
                                 console.log(event.detail.message); // Prints 'Hello World!'
                             });
                         </code>
-                    </pre>
-                    <br />
-                    <strong>Event Delegation:</strong> Event delegation is a technique for handling events in JavaScript. It
-                    involves adding a single event listener to a parent element that will fire for all descendants matching
-                    a selector, whether those descendants exist now or are added in the future. This is possible because
-                    events bubble up the DOM tree, so events on child elements will also trigger the event listener on their
-                    parent.
-                    <br /><br />
-                    <strong>Example:</strong>
-                    <br />
-                        <pre>
+                </pre>
+                <br />
+                <strong>Event Delegation:</strong> Event delegation is a technique
+                for handling events in JavaScript. It involves adding a single event
+                listener to a parent element that will fire for all descendants
+                matching a selector, whether those descendants exist now or are
+                added in the future. This is possible because events bubble up the
+                DOM tree, so events on child elements will also trigger the event
+                listener on their parent. <br /><br />
+                <strong>Example:</strong>
+                <br />
+                <pre>
                             <code>
                                 // HTML
                                 <ul id="parent-list">
@@ -1149,15 +1161,15 @@
                                 });
                             </code>
                         </pre>
-                    In this example, when the button with the ID 'myButton' is clicked, the event handler is triggered. The
-                preventDefault() method is called, preventing the default action of the event from occurring. The
-                stopPropagation() method is also called, preventing the event from propagating up or down the DOM
-                hierarchy.
+                In this example, when the button with the ID 'myButton' is clicked,
+                the event handler is triggered. The preventDefault() method is
+                called, preventing the default action of the event from occurring.
+                The stopPropagation() method is also called, preventing the event
+                from propagating up or down the DOM hierarchy.
                 </code>
             </section>
             <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
         </div>
-
     </section>
 
     <!-- Add more questions and answers here -->
