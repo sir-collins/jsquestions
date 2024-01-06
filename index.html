@@ -35,50 +35,1130 @@
 
 <body>
     <h1>JavaScript Questions and Answers</h1>
+    <section>
+        <h2>Foundational Concepts:</h2>
 
-    <div class="question">
-        <h3>Question 2:</h3>
-        <p>
-            Explain the difference between synchronous and asynchronous functions in
-            JavaScript.
-        </p>
-        <p class="answer">
+        <div class="question">
+            <h3>Question 1:</h3>
+            <p>
+                Explain the difference between synchronous and asynchronous functions
+                in JavaScript.
+            </p>
+            <section class="answer">
+                <code>
+            Synchronous and asynchronous functions refer to how JavaScript
+            manages the execution of code.
+            <br /><br />
+            <strong>Synchronous Functions:</strong> In synchronous operations,
+            each task must wait for the previous one to complete before moving
+            on. It follows a sequential and blocking execution model, meaning if
+            there's a time-consuming task, it will block the execution until
+            completed. For example, imagine fetching data from a server
+            synchronously; the entire program will halt until the data is
+            received. <br /><br />
+            <strong>Asynchronous Functions:</strong> On the other hand,
+            asynchronous operations don't wait for a task to finish before
+            moving on to the next one. Instead, it allows the program to
+            continue executing while the time-consuming task operates in the
+            background. This non-blocking behavior is particularly useful for
+            tasks like data fetching, where we don't want to freeze the entire
+            application while waiting for data. <br /><br />
+            In JavaScript, asynchronous behavior is often achieved using
+            callbacks, promises, and async/await. These mechanisms allow
+            developers to handle tasks like fetching data or reading files
+            without blocking the main thread, providing a more responsive user
+            experience.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 2:</h3>
+            <p>How does JavaScript handle variable scope and hoisting?</p>
+            <section class="answer">
+                <code>
+            Variable scope and hoisting are essential concepts in JavaScript
+            that influence how variables are declared, accessed, and their
+            visibility within different parts of the code.
+
+            <strong>Variable Scope:</strong> JavaScript has two types of
+            variable scope - global scope and local scope. Variables declared
+            outside any function or block have a global scope, making them
+            accessible throughout the entire code. Variables declared within a
+            function or block have a local scope, and they are only accessible
+            within that specific function or block. Example: ``` var globalVar =
+            "I am a global variable"; // Global scope function exampleFunction()
+            { var localVar = "I am a local variable"; // Local scope within the
+            function console.log(globalVar); // Accessible
+            console.log(localVar); // Accessible } console.log(globalVar); //
+            Accessible console.log(localVar); // Not accessible - ReferenceError
+            ```
+
+            <strong>Hoisting:</strong> Hoisting is the behavior where variable
+            and function declarations are moved to the top of their containing
+            scope during the compilation phase, allowing them to be used even
+            before they are declared in the code. Example: ```
+            console.log(hoistedVar); // undefined var hoistedVar = "I am
+            hoisted"; // Variable declaration is hoisted to the top // This is
+            equivalent to: // var hoistedVar; // console.log(hoistedVar); //
+            hoistedVar = "I am hoisted"; ``` Note that while the declaration is
+            hoisted, the assignment remains in its original position. Functions
+            are also hoisted in a similar way: ``` exampleFunction(); // Hoisted
+            function can be called before the declaration function
+            exampleFunction() { console.log("Function is hoisted"); } // This is
+            equivalent to: // function exampleFunction() { //
+            console.log("Function is hoisted"); // } // exampleFunction(); ```
+            Understanding variable scope and hoisting is crucial for writing
+            predictable and error-free JavaScript code.
+          </code>
+            </section>
+
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 3:</h3>
+            <p>
+                What are the different data types in JavaScript, and how do you
+                determine the type of a variable?
+            </p>
+            <p class="answer">
+                <code>
+            In JavaScript, there are several primitive data types, each
+            representing a single value. These include:
+            <ol>
+              <li>
+                <strong>number:</strong> Represents both integer and
+                floating-point numbers. Example:
+                <code>let count: number = 42;</code>
+                </li>
+                <li>
+                    <strong>string:</strong> Represents text data enclosed in single
+                    or double quotes. Example:
+                    <code>let message: string = "Hello, TypeScript";</code>
+                </li>
+                <li>
+                    <strong>boolean:</strong> Represents a binary value, either
+                    <code>true</code> or <code>false</code>. Example:
+                    <code>let isDone: boolean = false;</code>
+                </li>
+                <li>
+                    <strong>null:</strong> Represents the intentional absence of any
+                    object value. It is a primitive value, not a type, and can be
+                    assigned to variables to signify the absence of an object.
+                    Example:
+                    <code>let data: null = null;</code>
+                </li>
+                <li>
+                    <strong>undefined:</strong> Represents a variable that has been
+                    declared but hasn't been assigned a value. Example:
+                    <code>let value: undefined = undefined;</code>
+                </li>
+                <li>
+                    <strong>symbol:</strong> (ES6 feature) Represents a unique and
+                    immutable value often used as object keys. Example:
+                    <code>const uniqueKey = Symbol("description");</code>
+                </li>
+                <li>
+                    <strong>bigint:</strong> (ES11 feature) Represents arbitrary
+                    precision integers. Example:
+                    <code>const bigValue: bigint =
+                  1234567890123456789012345678901234567890n;</code>
+                </li>
+                </ol>
+                These primitive types serve as the building blocks for more complex
+                data structures, such as arrays, objects, and custom classes.
+                </code>
+            </p>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 4:</h3>
+            <p>
+                Describe the prototype chain and how it's used for inheritance in
+                JavaScript.
+            </p>
+            <section class="answer">
+                <code>
+            The prototype chain is a fundamental concept in JavaScript that
+            plays a crucial role in achieving inheritance. It allows objects to
+            inherit properties and methods from other objects by establishing a
+            chain-like structure.
+
+            <br /><br />
+
+            <strong>How it Works:</strong> Each object in JavaScript has a
+            prototype, which is essentially a reference to another object. When
+            you access a property or method on an object, JavaScript looks for
+            that property or method on the object itself. If it doesn't find it,
+            it looks in the object's prototype, forming a chain that continues
+            until the property or method is found or the end of the chain is
+            reached.
+
+            <br /><br />
+
+            <strong>Usage for Inheritance:</strong> Inheritance in JavaScript is
+            achieved by setting the prototype of one object to be another
+            object. This allows the child object to inherit properties and
+            methods from its prototype. When you try to access a property or
+            method on the child object, JavaScript looks in the child object
+            first. If it doesn't find it, it looks in the prototype, and so on,
+            creating a chain of inheritance.
+
+            <br /><br />
+
+            The prototype chain is the backbone of how constructor functions,
+            classes, and objects connect in JavaScript, providing a mechanism
+            for code reuse and creating a hierarchy of objects with shared
+            functionalities.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 5:</h3>
+            <p>
+                Explain the concept of closures and how they are used in JavaScript.
+            </p>
+            <section class="answer">
+                <code>
+            Closures in JavaScript are a powerful and elegant feature that
+            allows functions to retain access to variables from their outer
+            (enclosing) scope even after the outer function has finished
+            executing.
+            <br /><br />
+            <strong>How Closures Work:</strong> When a function is defined
+            within another function, it forms a closure. The inner function has
+            access not only to its own local variables but also to the variables
+            of the outer function. This creates a "closure" over those
+            variables, preserving them even when the outer function has
+            completed execution. <br /><br />
+            <strong>Use Cases of Closures:</strong> Closures are commonly used
+            for maintaining private variables, creating factory functions, and
+            implementing callback functions. For instance, a closure can be
+            employed to encapsulate state in a way that only the inner function
+            has access to it, providing a form of information hiding.
+            <br /><br />
+            <strong>Example:</strong>
+            <br />
             <code>
-                Synchronous and asynchronous functions refer to how JavaScript manages
-                the execution of code.
-                <br /><br />
-                <strong>Synchronous Functions:</strong> In synchronous operations, each task must
-                wait for the previous one to complete before moving on. It follows a
-                sequential and blocking execution model, meaning if there's a
-                time-consuming task, it will block the execution until completed. For
-                example, imagine fetching data from a server synchronously; the entire
-                program will halt until the data is received.
-                <br /><br />
-                <strong>Asynchronous Functions:</strong> On the other hand, asynchronous operations
-                don't wait for a task to finish before moving on to the next one.
-                Instead, it allows the program to continue executing while the
-                time-consuming task operates in the background. This non-blocking
-                behavior is particularly useful for tasks like data fetching, where we
-                don't want to freeze the entire application while waiting for data.
-                <br /><br />
-                In JavaScript, asynchronous behavior is often achieved using callbacks,
-                promises, and async/await. These mechanisms allow developers to handle
-                tasks like fetching data or reading files without blocking the main
-                thread, providing a more responsive user experience.
+              function outerFunction() { let outerVariable = "I am from the
+              outer function"; function innerFunction() {
+              console.log(outerVariable); } return innerFunction; } const
+              closureExample = outerFunction(); closureExample(); // Prints "I
+              am from the outer function"
             </code>
-        </p>
-        <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
-    </div>
+                <br /><br />
+                In this example, `innerFunction` forms a closure over
+                `outerVariable`, allowing it to access and log the value even after
+                `outerFunction` has finished executing.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
 
-    <div class="question">
-        <h3>Question 2:</h3>
-        <p>What are the data types in JavaScript?</p>
-        <p class="answer">
-            JavaScript has several data types including string, number, boolean,
-            object, and more.
-        </p>
-        <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
-    </div>
+        <div class="question">
+            <h3>Question:</h3>
+            <p>What are the different ways to create objects in JavaScript?</p>
+            <section class="answer">
+                <code>
+            In JavaScript, there are multiple ways to create objects:
+            <br /><br />
+            <strong>1. Object Literal:</strong> The simplest way to create an
+            object is by using the object literal notation. For example:
+            <br /><br />
+            ```javascript const myObject = { key: 'value', anotherKey:
+            'anotherValue' }; ```
+            <br /><br />
+            <strong>2. Constructor Function:</strong> You can create objects
+            using constructor functions. This involves defining a function that
+            serves as a blueprint for objects and then instantiating objects
+            using the `new` keyword. For example: <br /><br />
+            ```javascript function Person(name, age) { this.name = name;
+            this.age = age; } const person1 = new Person('John', 25); ```
+            <br /><br />
+            <strong>3. Object.create():</strong> This method allows you to
+            create a new object with a specified prototype object. For example:
+            <br /><br />
+            ```javascript const myObject = Object.create(protoObject); ```
+            <br /><br />
+            <strong>4. ES6 Classes:</strong> With the introduction of ES6, you
+            can use classes to create objects in a more structured way. For
+            example: <br /><br />
+            ```javascript class Car { constructor(make, model) { this.make =
+            make; this.model = model; } } const myCar = new Car('Toyota',
+            'Camry'); ```
+            <br /><br />
+            These are some of the common methods to create objects in
+            JavaScript, each with its own use case and advantages.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                How do you compare and contrast strict mode vs. non-strict mode in
+                JavaScript?
+            </p>
+            <section class="answer">
+                <code>
+            Strict mode and non-strict mode in JavaScript are two different ways
+            of interpreting and executing code. Let's explore their differences:
+            <br /><br />
+            <strong>Strict Mode:</strong> Strict mode is a way to opt into a
+            restricted variant of JavaScript. When strict mode is enabled, the
+            interpreter enforces a set of rules and behaviors that are not
+            present in non-strict mode. This helps catch common coding errors
+            and prevents the use of certain "unsafe" features. <br /><br />
+            Some key characteristics of strict mode include:
+            <ul>
+              <li>
+                Variables must be declared with var, let, or const before use.
+              </li>
+              <li>
+                Assigning a value to an undeclared variable, or assigning to a
+                read-only property, is an error.
+              </li>
+              <li>
+                Deleting variables, functions, or function arguments is not
+                allowed.
+              </li>
+              <li>Octal literals (e.g., 0123) are not allowed.</li>
+              <li>Function parameters with the same name are not allowed.</li>
+            </ul>
+            <br />
+            <strong>Non-Strict Mode:</strong> Also known as "sloppy mode,"
+            non-strict mode is the default mode in JavaScript. In this mode, the
+            interpreter is more lenient and allows for some behaviors that
+            strict mode prohibits. This mode is maintained for backward
+            compatibility with older code that may not adhere to the stricter
+            rules introduced in ECMAScript 5 (ES5). <br /><br />
+            Key points of non-strict mode include:
+            <ul>
+              <li>Variables can be used without declaration.</li>
+              <li>
+                Assigning values to undeclared variables creates a global
+                variable.
+              </li>
+              <li>
+                Deleting variables, functions, or function arguments is allowed.
+              </li>
+              <li>Octal literals are allowed.</li>
+              <li>Function parameters with the same name are allowed.</li>
+            </ul>
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+    </section>
+    <section>
+        <h2>Asynchronous Programming:</h2>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                Why is fetch the preferred way to send a network request via the web
+                browser?
+            </p>
+            <section class="answer">
+                <code>
+            The preference for using the fetch API to send network requests in
+            the web browser is attributed to several factors.
+            <br /><br />
+            <strong>Asynchronous Nature:</strong> Fetch operates asynchronously,
+            allowing other tasks to proceed without waiting for the network
+            request to complete. This is crucial for preventing the user
+            interface from freezing while fetching data, resulting in a more
+            responsive user experience. <br /><br />
+            <strong>Promise-Based:</strong> The fetch API returns a Promise,
+            enabling the use of modern asynchronous patterns such as promises
+            and async/await. This makes it easier for developers to handle
+            responses and errors in a more streamlined and readable manner.
+            <br /><br />
+            <strong>Flexible and Powerful:</strong> Fetch provides a flexible
+            and powerful interface for making HTTP requests. It supports a wide
+            range of options and configurations, allowing developers to
+            customize requests based on their specific needs. Additionally, it
+            is not limited to just browsers and can also be used in other
+            JavaScript environments. <br /><br />
+            <strong>Modern Standard:</strong> Fetch is a modern standard for
+            making network requests in JavaScript. It is now widely supported
+            across browsers and is considered the successor to traditional
+            methods like XMLHttpRequest. Its consistent API design and ease of
+            use contribute to its preference in modern web development.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                What is the difference between the call stack and the task queue in
+                JavaScript?
+            </p>
+            <section class="answer">
+                <code>
+            The call stack and the task queue are two different mechanisms that
+            JavaScript uses to manage the execution of code.
+            <br /><br />
+            <strong>Call Stack:</strong> The call stack is a data structure that
+            records where in the program we are. Whenever a function is invoked,
+            it is placed on the top of the call stack, and when it returns, it
+            is removed from the stack. This is how JavaScript manages function
+            calls in its single-threaded environment. <br /><br />
+            <strong>Task Queue:</strong> The task queue is a data structure that
+            records tasks that need to be processed. Whenever an asynchronous
+            function is invoked, it is placed in the task queue, and when the
+            call stack is empty, it will be processed and moved to the call
+            stack to be executed. <br /><br />
+            The call stack and the task queue work together to handle the
+            execution of code in JavaScript. The call stack manages function
+            calls, while the task queue manages asynchronous tasks. This allows
+            JavaScript to handle asynchronous operations in a non-blocking
+            manner, providing a more responsive user experience.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>
+                Is there another option, besides explicit promises, to handle
+                asynchronous code in JavaScript?
+            </h3>
+            <section class="answer">
+                <code>
+            Yes, another option to handle asynchronous code in JavaScript is by
+            using
+            <strong>async/await</strong>. The async/await syntax provides a more
+            synchronous-looking way to write asynchronous code. It allows you to
+            write asynchronous operations in a more linear fashion, making the
+            code easier to read and maintain. Under the hood, async/await still
+            relies on promises, but it abstracts away the explicit promise
+            chaining and callback handling, providing a cleaner and more
+            intuitive syntax. Example:
+            <br />
+            <pre>
+                        <code>
+                            async function fetchData() {
+                                try {
+                                    let response = await fetch('https://api.example.com/data');
+                                    let data = await response.json();
+                                    console.log(data);
+                                } catch (error) {
+                                    console.error('Error fetching data:', error);
+                                }
+                            }
+                        </code>
+                </pre>
+                </code>
+            </section>
+        </div>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                What is the difference between the window, document, and screen in
+                JavaScript?
+            </p>
+            <section class="answer">
+                <code>
+            In JavaScript, the window, document, and screen are three different
+            objects that are used to represent different aspects of the browser.
+            <br /><br />
+            <strong>window:</strong> The window object represents the browser
+            window. It contains properties and methods that allow you to
+            manipulate the browser window. For example, you can use it to open
+            new windows, move or resize existing windows, or close windows.
+            <br /><br />
+            <strong>document:</strong> The document object represents the DOM
+            (Document Object Model) that is loaded in the browser window. It
+            contains properties and methods that allow you to manipulate the
+            DOM. For example, you can use it to get or set the content of an
+            HTML element, create new elements, or remove existing elements.
+            <br /><br />
+            <strong>screen:</strong> The screen object represents the screen or
+            monitor. It contains properties that allow you to get information
+            about the user's screen, such as the width and height of the screen.
+            <br /><br />
+            These three objects are often used together to perform various
+            operations in the browser.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                What is the difference between the window.onload event and the
+                DOMContentLoaded event?
+            </p>
+            <section class="answer">
+                <code>
+            Both the window.onload event and the DOMContentLoaded event are used
+            to detect when the DOM (Document Object Model) has finished loading.
+            However, there are some key differences between them.
+            <br /><br />
+            <strong>window.onload:</strong> The window.onload event fires when
+            the entire page has finished loading, including all assets such as
+            images, stylesheets, and scripts. This means that the event will not
+            fire until all the content on the page has finished loading.
+            <br /><br />
+            <strong>DOMContentLoaded:</strong> The DOMContentLoaded event fires
+            when the initial HTML document has been completely loaded and
+            parsed, without waiting for assets to finish loading. This means
+            that the event will fire as soon as the DOM is ready, even if some
+            images, stylesheets, or scripts are still being loaded. <br /><br />
+            In general, the DOMContentLoaded event is preferred over
+            window.onload because it fires sooner, providing a better user
+            experience. However, if your code relies on assets such as images or
+            stylesheets, you may need to use window.onload instead to ensure
+            that the assets have finished loading before executing your code.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                What is the difference between the window.location.href and
+                window.location.replace methods?
+            </p>
+            <section class="answer">
+                <code>
+            Both the window.location.href and window.location.replace methods
+            are used to redirect the user to a different page. However, there
+            are some key differences between them.
+            <br /><br />
+            <strong>window.location.href:</strong> The window.location.href
+            method redirects the user to a different page by setting the href
+            property of the window's location object. This method allows the
+            user to navigate back to the original page using the browser's back
+            button. <br /><br />
+            <strong>window.location.replace:</strong> The
+            window.location.replace method redirects the user to a different
+            page by replacing the current page in the browser's history with the
+            new page. This method does not allow the user to navigate back to
+            the original page using the browser's back button. <br /><br />
+            In general, the window.location.replace method is preferred over
+            window.location.href because it does not clutter up the browser's
+            history with unnecessary entries. However, if you need to allow the
+            user to navigate back to the original page, you may need to use
+            window.location.href instead.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <!-- Explain the differences between callbacks, promises, and async/await. -->
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                Explain the differences between callbacks, promises, and async/await.
+            </p>
+            <section class="answer">
+                <code>
+            Callbacks, promises, and async/await are all mechanisms for handling
+            asynchronous operations in JavaScript. Let's explore their
+            differences:
+            <br /><br />
+            <strong>Callbacks:</strong> A callback is a function that is passed
+            as an argument to another function and is executed after some
+            operation has completed. It is a common way to handle asynchronous
+            operations in JavaScript, such as making network requests or reading
+            files. Example:
+            <br />
+            <pre>
+                        <code>
+                            function fetchData(callback) {
+                                fetch('https://api.example.com/data')
+                                    .then(response => response.json())
+                                    .then(data => callback(data))
+                                    .catch(error => console.error(error));
+                            }
+                        </code>
+                </pre>
+
+                <br /><br />
+                <strong>Promises:</strong> A promise is an object that represents
+                the eventual completion or failure of an asynchronous operation. It
+                allows you to write asynchronous code in a more synchronous fashion,
+                using the then() and catch() methods to handle the eventual result
+                or error. <br /><br />
+                <strong>Async/Await:</strong> Async/await is a syntax for writing
+                asynchronous code that looks like synchronous code. It allows you to
+                write asynchronous operations in a more linear fashion, making the
+                code easier to read and maintain. Under the hood, async/await still
+                relies on promises, but it abstracts away the explicit promise
+                chaining and callback handling, providing a cleaner and more
+                intuitive syntax.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <!-- How do you handle common errors and edge cases with asynchronous operations? -->
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                How do you handle common errors and edge cases with asynchronous
+                operations?
+            </p>
+
+            <h3>Answer:</h3>
+            <section class="answer">
+                <code>
+            Handling common errors and edge cases with asynchronous operations
+            in JavaScript involves implementing effective error handling
+            mechanisms to ensure robust and reliable code execution. Here are
+            some strategies for dealing with errors in asynchronous code:
+            <br /><br />
+            <strong>1. Using Promises:</strong> Promises provide a structured
+            way to handle asynchronous operations and their errors. Ensure that
+            your asynchronous functions return promises and use the `.catch()`
+            method to capture and handle any errors that may occur during the
+            execution. <br /><br />
+            <strong>Example:</strong>
+            <pre>
+                        <code>
+                            function fetchData() {
+                                return new Promise((resolve, reject) => {
+                                    // Asynchronous operation
+                                    if (/* Operation is successful */) {
+                                        resolve(data);
+                                    } else {
+                                        reject(new Error('Failed to fetch data'));
+                                    }
+                                });
+                            }
+        
+                            fetchData()
+                                .then(data => {
+                                    // Handle successful data retrieval
+                                })
+                                .catch(error => {
+                                    // Handle errors
+                                    console.error(error.message);
+                                });
+                        </code>
+                </pre>
+                <br />
+                <strong>2. Async/Await:</strong> Utilize the async/await syntax for
+                asynchronous code. This makes error handling more synchronous in
+                appearance and simplifies the try/catch structure for capturing
+                errors. <br /><br />
+                <strong>Example:</strong>
+                <pre>
+                        <code>
+                            async function fetchData() {
+                                try {
+                                    // Asynchronous operation
+                                    const data = await someAsyncOperation();
+                                    // Handle successful data retrieval
+                                } catch (error) {
+                                    // Handle errors
+                                    console.error(error.message);
+                                }
+                            }
+        
+                            fetchData();
+                        </code>
+                    </pre>
+                <br />
+                <strong>3. Handling Specific Errors:</strong> Identify and handle
+                specific error types that may occur during asynchronous operations.
+                This allows for more targeted and informative error messages.
+                <br /><br />
+                <strong>Example:</strong>
+                <pre>
+                        <code>
+                            async function fetchData() {
+                                try {
+                                    // Asynchronous operation
+                                    const data = await someAsyncOperation();
+                                    // Handle successful data retrieval
+                                } catch (error) {
+                                    if (error instanceof TimeoutError) {
+                                        // Handle timeout error
+                                    } else {
+                                        // Handle other errors
+                                        console.error(error.message);
+                                    }
+                                }
+                            }
+        
+                            fetchData();
+                        </code>
+                    </pre>
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Hide Answer</p>
+        </div>
+
+        <!-- How would you implement a retry mechanism for failed asynchronous requests?      -->
+
+        <div class="question">
+            <h3>Question 2:</h3>
+            <p>
+                How would you implement a retry mechanism for failed asynchronous
+                requests in JavaScript?
+            </p>
+            <section class="answer">
+                <code>
+            Implementing a retry mechanism for failed asynchronous requests is
+            crucial for improving the resilience of web applications. Below is a
+            simple example using promises and the fetch API:
+            <br /><br />
+            <strong>Using Promises:</strong>
+            <br />
+            <pre>
+                        <code>
+                            function retryFailedRequest(url, maxRetries = 3, delay = 1000) {
+                                return new Promise((resolve, reject) => {
+                                    function attemptRequest() {
+                                        fetch(url)
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Request failed');
+                                                }
+                                                resolve(response);
+                                            })
+                                            .catch(error => {
+                                                if (maxRetries > 0) {
+                                                    maxRetries--;
+                                                    setTimeout(attemptRequest, delay); // This is done to wait for the delay to pass before retrying the request.
+                                                } else {
+                                                    reject(error);
+                                                }
+                                            });
+                                    }
+        
+                                    attemptRequest();
+                                });
+                            }
+        
+                            // Example Usage:
+                            retryFailedRequest('https://api.example.com/data')
+                                .then(response => console.log('Success:', response))
+                                .catch(error => console.error('Failed after retries:', error));
+                        </code>
+                </pre>
+
+                <!-- Another code example is -->
+                <br /><br />
+                <strong>Using Async/Await:</strong>
+                <br />
+                <pre>
+                        <code>
+                            async function retryFailedRequest(url, maxRetries = 3, delay = 1000) {
+                                try {
+                                    const response = await fetch(url);
+                                    if (!response.ok) {
+                                        throw new Error('Request failed');
+                                    }
+                                    return response;
+                                } catch (error) {
+                                    if (maxRetries > 0) {
+                                        maxRetries--;
+                                        await new Promise(resolve => setTimeout(resolve, delay)); // The reason for this is to wait for the delay to pass before retrying the request.
+                                        return retryFailedRequest(url, maxRetries, delay);
+                                    } else {
+                                        throw error;
+                                    }
+                                }
+                            }
+
+        
+                            // Example Usage:
+                            retryFailedRequest('https://api.example.com/data')
+                                .then(response => console.log('Success:', response))
+                                .catch(error => console.error('Failed after retries:', error));
+                        </code>
+                    </pre>
+                <br /><br />
+
+                This function, <code>retryFailedRequest</code>, attempts the request
+                multiple times with a specified delay between retries. <br /><br />
+                You can customize the <code>maxRetries</code> and
+                <code>delay</code> parameters based on your application's
+                requirements.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Event Handling</h2>
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>What is event delegation and how does it work in JavaScript?</p>
+            <section class="answer">
+                <code>
+            Event delegation is a technique for handling events in JavaScript.
+            It involves adding a single event listener to a parent element that
+            will fire for all descendants matching a selector, whether those
+            descendants exist now or are added in the future. This is possible
+            because events bubble up the DOM tree, so events on child elements
+            will also trigger the event listener on their parent.
+            <br /><br />
+            Event delegation is useful for a number of reasons:
+            <ul>
+              <li>
+                It eliminates the need to add event listeners to specific nodes;
+                instead, the event listener is added to one parent.
+              </li>
+              <li>
+                It allows you to dynamically add elements without worrying about
+                attaching event listeners to them.
+              </li>
+              <li>
+                It reduces the memory footprint since only one event listener is
+                needed.
+              </li>
+            </ul>
+            <br />
+            <strong>Example:</strong>
+            <br />
+            <pre>
+                        <code>
+                            // HTML
+                            <ul id="parent-list">
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                            </ul>
+        
+                            // JavaScript
+                            const parentList = document.getElementById('parent-list');
+        
+                            parentList.addEventListener('click', event => {
+                                const clickedElement = event.target;
+        
+                                if (clickedElement.tagName === 'LI') {
+                                    console.log('List item', clickedElement.textContent, 'was clicked!');
+                                }
+                            });
+                        </code>
+                </pre>
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Hide Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 2:</h3>
+            <p>Is there a way to stop an event from bubbling up in JavaScript?</p>
+            <section class="answer">
+                <code>
+            Yes, in JavaScript, you can stop an event from bubbling up using the
+            <code>stopPropagation()</code> method. This method is commonly used
+                in event handlers to prevent the event from propagating or
+                "bubbling" up or down the DOM hierarchy. <br /><br />
+                Here is an example:
+                <pre>
+                        <code>
+                            const button = document.getElementById('myButton');
+                            button.addEventListener('click', (event) => {
+                                // Perform some actions
+                                event.stopPropagation(); // This prevents the event from bubbling up
+                            });
+                        </code>
+                    </pre>
+                In this example, when the button with the ID 'myButton' is clicked,
+                the event handler is triggered. The
+                <code>stopPropagation()</code> method is called, preventing the
+                event from reaching other elements in the DOM hierarchy. This is
+                particularly useful when you want to handle an event on a specific
+                element without triggering the same event on its parent or ancestor
+                elements.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <div class="question">
+            <h3>Question 3:</h3>
+            <p>
+                What is the difference between event.preventDefault() and
+                event.stopPropagation() in JavaScript?
+            </p>
+            <section class="answer">
+                <code>
+            Both the <code>event.preventDefault()</code> and
+                <code>event.stopPropagation()</code> methods are used to handle
+                events in JavaScript. However, there are some key differences
+                between them. <br /><br />
+                <strong>event.preventDefault():</strong> The
+                <code>event.preventDefault()</code> method prevents the default
+                action of an event from occurring. For example, it can be used to
+                prevent a form from submitting or a link from navigating to a new
+                page. This method does not stop the event from propagating up or
+                down the DOM hierarchy. <br /><br />
+                <strong>event.stopPropagation():</strong> The
+                <code>event.stopPropagation()</code> method prevents the event from
+                propagating up or down the DOM hierarchy. This method does not
+                prevent the default action of the event from occurring. <br /><br />
+                <strong>Example:</strong>
+                <br />
+                <pre>
+                        <code>
+                            const button = document.getElementById('myButton');
+                            button.addEventListener('click', (event) => {
+                                // Prevent the default action of the event
+                                event.preventDefault();
+                                // Stop the event from propagating up or down the DOM hierarchy
+                                event.stopPropagation();
+                            });
+                        </code>
+                    </pre>
+                In this example, when the button with the ID 'myButton' is clicked,
+                the event handler is triggered. The
+                <code>preventDefault()</code> method is called, preventing the
+                default action of the event from occurring. The
+                <code>stopPropagation()</code> method is also called, preventing the
+                event from propagating up or down the DOM hierarchy.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <!-- How is the event loop defined in the JavaScript engine? -->
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>How is the event loop defined in the JavaScript engine?</p>
+            <section class="answer">
+                <code>
+            The event loop is a mechanism that allows JavaScript to perform
+            non-blocking operations. It consists of two main components: the
+            call stack and the task queue.
+            <br /><br />
+            <strong>Call Stack:</strong> The call stack is a data structure that
+            records where in the program we are. Whenever a function is invoked,
+            it is placed on the top of the call stack, and when it returns, it
+            is removed from the stack. This is how JavaScript manages function
+            calls in its single-threaded environment. <br /><br />
+            <strong>Task Queue:</strong> The task queue is a data structure that
+            records tasks that need to be processed. Whenever an asynchronous
+            function is invoked, it is placed in the task queue, and when the
+            call stack is empty, it will be processed and moved to the call
+            stack to be executed. <br /><br />
+            The call stack and the task queue work together to handle the
+            execution of code in JavaScript. The call stack manages function
+            calls, while the task queue manages asynchronous tasks. This allows
+            JavaScript to handle asynchronous operations in a non-blocking
+            manner, providing a more responsive user experience.The event loop
+            constantly checks the call stack and the callback queue. If the call
+            stack is empty, it takes the first callback from the queue and
+            pushes it onto the call stack, initiating its execution.
+            <br /><br />
+            <strong>Non-Blocking:</strong> The event loop ensures that
+            asynchronous operations don't block the main thread. Instead of
+            waiting for an asynchronous task to complete, the program can
+            continue executing other tasks. <br /><br />
+            In summary, the event loop is a mechanism that allows JavaScript to
+            handle asynchronous tasks by offloading them to the runtime
+            environment, preventing blocking and maintaining a smooth user
+            experience.
+          </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Hide Answer</p>
+        </div>
+
+        <!-- What is the difference between the bubbling phase and the capturing phase in event propagation? -->
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>
+                What is the difference between the bubbling phase and the capturing
+                phase in event propagation?
+            </p>
+            <section class="answer">
+                <code>
+            Event propagation is the process of capturing and processing events
+            in the DOM hierarchy. It involves two phases: the capturing phase
+            and the bubbling phase.
+          
+            <br /><br />
+            <strong>Event Capturing:</strong> In the capturing phase, the event
+            starts from the root of the DOM hierarchy and trickles down to the
+            target element. It allows you to capture the event before it reaches
+            the target. Event capturing uses the
+            <code>addEventListener</code> method with the third parameter set to
+                <code>true</code>.
+                <br /><br />
+                <strong>Event Bubbling:</strong> In the bubbling phase, the event
+                starts from the target element and bubbles up through its ancestors
+                to the root of the DOM. It allows you to handle the event as it
+                propagates upwards. Event bubbling is the default behavior in most
+                browsers and occurs when the <code>addEventListener</code> method's
+                third parameter is set to <code>false</code> or omitted.
+                <br /><br />
+
+                <strong>Example:</strong>
+                <br />
+                <pre>
+                        <code>
+                            // HTML
+                            <div id="outer">
+                                <div id="inner">
+                                    <button id="button">Click Me</button>
+                                </div>
+                            </div>
+        
+                            // JavaScript
+                            const outer = document.getElementById('outer');
+                            const inner = document.getElementById('inner');
+                            const button = document.getElementById('button');
+        
+                            outer.addEventListener('click', () => console.log('Outer'));
+                            inner.addEventListener('click', () => console.log('Inner'));
+                            button.addEventListener('click', () => console.log('Button'));
+                        </code>
+                </pre>
+                In this example, when the button is clicked, the event is first
+                captured by the button, then propagated to the inner div, and
+                finally propagated to the outer div. This is the default behavior
+                for most events.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <!-- What is the difference between event.target and event.currentTarget in JavaScript? -->
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>What is the difference between event.target and event.currentTarget in JavaScript?</p>
+            <section class="answer">
+                <code>
+                    Both the event.target and event.currentTarget properties are used to refer to the element on which the event occurred. However, there are some key differences between them.
+                    <br /><br />
+                    <strong>event.target:</strong> The event.target property refers to the element on which the event occurred, while the event.currentTarget property refers to the element to which the event handler is attached. This means that the event.target property can be different from the event.currentTarget property if the event handler is attached to an ancestor element.
+                    <br /><br />
+                    <strong>Example:</strong>
+                    <br />
+                    <pre>
+                        <code>
+                            // HTML
+                            <div id="outer">
+                                <div id="inner">
+                                    <button id="button">Click Me</button>
+                                </div>
+                            </div>
+        
+                            // JavaScript
+                            const outer = document.getElementById('outer');
+                            const inner = document.getElementById('inner');
+                            const button = document.getElementById('button');
+        
+                            outer.addEventListener('click', event => {
+                                console.log('Target:', event.target.id);
+                                console.log('Current Target:', event.currentTarget.id);
+                            });
+        
+                            inner.addEventListener('click', event => {
+                                console.log('Target:', event.target.id);
+                                console.log('Current Target:', event.currentTarget.id);
+                            });
+        
+                            button.addEventListener('click', event => {
+                                console.log('Target:', event.target.id);
+                                console.log('Current Target:', event.currentTarget.id);
+                            });
+                        </code>
+                </pre>
+                In this example, when the button is clicked, the event is first captured by the button, then propagated
+                to the inner div, and finally propagated to the outer div. This is the default behavior for most events.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+        <!-- How do you handle custom events and event delegation? -->
+
+        <div class="question">
+            <h3>Question:</h3>
+            <p>How do you handle custom events and event delegation?</p>
+            <section class="answer">
+                <code>
+                    Custom events and event delegation are two different ways to handle events in JavaScript.
+                    <br /><br />
+                    <strong>Custom Events:</strong> Custom events are events that are created by the developer and triggered
+                    manually, rather than automatically by the browser. They are useful for handling complex interactions
+                    that cannot be handled by the browser's built-in events. 
+                    <br /><br />
+                    <strong>Example:</strong>
+                    <br />
+                    <pre>
+                        <code>
+                            // Create a custom event
+                            const event = new CustomEvent('my-event', {
+                                detail: {
+                                    message: 'Hello World!'
+                                }
+                            });
+        
+                            // Dispatch the event
+                            document.dispatchEvent(event);
+        
+                            // Add an event listener
+                            document.addEventListener('my-event', event => {
+                                console.log(event.detail.message); // Prints 'Hello World!'
+                            });
+                        </code>
+                    </pre>
+                    <br />
+                    <strong>Event Delegation:</strong> Event delegation is a technique for handling events in JavaScript. It
+                    involves adding a single event listener to a parent element that will fire for all descendants matching
+                    a selector, whether those descendants exist now or are added in the future. This is possible because
+                    events bubble up the DOM tree, so events on child elements will also trigger the event listener on their
+                    parent.
+                    <br /><br />
+                    <strong>Example:</strong>
+                    <br />
+                        <pre>
+                            <code>
+                                // HTML
+                                <ul id="parent-list">
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                </ul>
+            
+                                // JavaScript
+                                const parentList = document.getElementById('parent-list');
+            
+                                parentList.addEventListener('click', event => {
+                                    const clickedElement = event.target;
+            
+                                    if (clickedElement.tagName === 'LI') {
+                                        console.log('List item', clickedElement.textContent, 'was clicked!');
+                                    }
+                                });
+                            </code>
+                        </pre>
+                    In this example, when the button with the ID 'myButton' is clicked, the event handler is triggered. The
+                preventDefault() method is called, preventing the default action of the event from occurring. The
+                stopPropagation() method is also called, preventing the event from propagating up or down the DOM
+                hierarchy.
+                </code>
+            </section>
+            <p class="show-answer" onclick="toggleAnswer(this)">Show Answer</p>
+        </div>
+
+    </section>
 
     <!-- Add more questions and answers here -->
 
